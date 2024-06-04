@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{fragments/head.html :: headFragment}"/>
+<body>
+<div class="container">
+
+  <div class="topBox">
+    <div style="display: flex; justify-content: flex-end; align-items: center;">
+      <label for="textInputTop" style="font-size: 20px;">
+        총 <span th:text="${QrDataVO != null and QrDataVO.dozList != null ? QrDataVO.dozList.size() : 0}"></span>
+        개의 약물을 처방 받으셨습니다.
+      </label>
+      <img src="../images/QR.png" alt="QR 이미지" style="width: 70px; height: 70px; margin-left: 90px;">
+    </div>
+    <label for="textInputTop">
+      [고객]: <span th:text="${QrDataVO.patData.patName}"></span> / <span id="patGender"></span> / <span
+      id="patManAge"></span>
+    </label>
+    <label for="textInputTop">[일자]: <span id="infDate"></span></label>
+    <label for="textInputTop">[병원]: <span th:text="${QrDataVO.hspData.hspMedicalName}"></span></label>
+    <input type="button" class="form-control" onclick="downloadPDF()" id="textInputTop" value="QR 처방전 다운로드"
+           style="color: blue; border: none; background: white; font-weight: bold;">
+  </div>
+
+  <div class="form-groups">
+    <div class="form-group" th:each="dozData : ${QrDataVO.dozList}">
+      <div class="drugImgContainer">
+        <img th:id="'drugImg_'+${dozData.baseDrugModel.index}"
+             onError="this.src='/images/default.jpg'"
+             alt="약품 이미지" class="drugImg"/>
+      </div>
+      <div>
+        <span class="sub-desc" th:text="${dozData.baseDrugModel.unitNm}">정</span>
+        <span class="sub-desc" th:text="${dozData.dozSingleDose + dozData.baseDrugModel.unitNm + '/1회'}">1정/1회</span>
+      </div>
+      <h2 th:text="${dozData.baseDrugModel.drugName}"></h2><br/>
+      <label for="textInput1" th:text="${dozData.baseDrugModel.clsName}"></label>
+      <input type="button" class="form-control" id="textInput1" value="자세히보기"
+             style="color: black; border: none; background: lightgray;"
+             th:onclick="'location.href=\'/drugInfoTab?index='+ @{${dozData.baseDrugModel.index}} + '\''">
+      <input type="button" class="form-control" id="textInput2" value="자세히보기(A)"
+             style="color: black; border: none; background: lightgray;"
+             th:onclick="'location.href=\'/drugInfoAcc?index='+ @{${dozData.baseDrugModel.index}} + '\''">
+    </div>
+  </div>
+
+</div>
+<script th:inline="javascript">
+  var ssno = [[${QrDataVO.patData.patSsno}]];
+  var infDate = [[${QrDataVO.infData.infPubDate}]];
+  var dozList = [[${QrDataVO.dozList}]];
+
+  window.onload = function () {
+    $('#patGender').text(getGender(ssno));
+    $('#patManAge').text(getManAge(ssno));
+    $('#infDate').text(getDateFormat(infDate));
+
+    // 이미지 설정
+    for(var i = 0;i<dozList.length;i++){
+      var dozData = dozList[i];
+      var baseDrug = dozData.baseDrugModel;
+
+      $('#drugImg_'+i).attr('src', baseDrug.imgUrl);
+    }
+  }
+
+  function downloadPDF() {
+    html2pdf().from(document.body).save();
+  }
+
+</script>
+</body>
+</html>

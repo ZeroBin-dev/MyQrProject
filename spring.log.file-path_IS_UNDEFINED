@@ -1,0 +1,36 @@
+[1;35m05-20 10:32:46[0;39m [[1;33mINFO [0;39m] [36mo.h.v.i.u.Version.<clinit>[0;39m - HV000001: Hibernate Validator 8.0.1.Final 
+[1;35m05-20 10:32:46[0;39m [[1;33mINFO [0;39m] [36mm.q.p.MobileQrPrescriptionApp.logStarting[0;39m - Starting MobileQrPrescriptionApp using Java 17.0.3 with PID 19876 (C:\DEV_ITLJ\Mobile_QR_Prescription\out\production\classes started by ZeroBin in C:\DEV_ITLJ\Mobile_QR_Prescription) 
+[1;35m05-20 10:32:46[0;39m [[1;33mINFO [0;39m] [36mm.q.p.MobileQrPrescriptionApp.logStartupProfileInfo[0;39m - The following 1 profile is active: "local" 
+[1;35m05-20 10:32:47[0;39m [[1;33mINFO [0;39m] [36mo.s.b.w.e.t.TomcatWebServer.initialize[0;39m - Tomcat initialized with port(s): 1121 (http) 
+[1;35m05-20 10:32:47[0;39m [[1;33mINFO [0;39m] [36mo.a.c.h.Http11NioProtocol.log[0;39m - Initializing ProtocolHandler ["http-nio-1121"] 
+[1;35m05-20 10:32:47[0;39m [[1;33mINFO [0;39m] [36mo.a.c.c.StandardService.log[0;39m - Starting service [Tomcat] 
+[1;35m05-20 10:32:47[0;39m [[1;33mINFO [0;39m] [36mo.a.c.c.StandardEngine.log[0;39m - Starting Servlet engine: [Apache Tomcat/10.1.15] 
+[1;35m05-20 10:32:47[0;39m [[1;33mINFO [0;39m] [36mo.a.c.c.C.[.[.[/].log[0;39m - Initializing Spring embedded WebApplicationContext 
+[1;35m05-20 10:32:47[0;39m [[1;33mINFO [0;39m] [36mo.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext[0;39m - Root WebApplicationContext: initialization completed in 900 ms 
+[1;35m05-20 10:32:47[0;39m [[1;33mINFO [0;39m] [36mo.a.c.h.Http11NioProtocol.log[0;39m - Starting ProtocolHandler ["http-nio-1121"] 
+[1;35m05-20 10:32:47[0;39m [[1;33mINFO [0;39m] [36mo.s.b.w.e.t.TomcatWebServer.start[0;39m - Tomcat started on port(s): 1121 (http) with context path '' 
+[1;35m05-20 10:32:47[0;39m [[1;33mINFO [0;39m] [36mm.q.p.MobileQrPrescriptionApp.logStarted[0;39m - Started MobileQrPrescriptionApp in 2.08 seconds (process running for 2.547) 
+[1;35m05-20 10:32:57[0;39m [[1;33mINFO [0;39m] [36mo.a.c.c.C.[.[.[/].log[0;39m - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+[1;35m05-20 10:32:57[0;39m [[1;33mINFO [0;39m] [36mo.s.w.s.DispatcherServlet.initServletBean[0;39m - Initializing Servlet 'dispatcherServlet' 
+[1;35m05-20 10:32:57[0;39m [[1;33mINFO [0;39m] [36mo.s.w.s.DispatcherServlet.initServletBean[0;39m - Completed initialization in 1 ms 
+[1;35m05-20 10:32:57[0;39m [[1;33mINFO [0;39m] [36mm.q.p.c.QrCodeController.userMain[0;39m - 로그테스트 
+[1;35m05-20 10:32:57[0;39m [[1;33mERROR[0;39m] [36mm.q.p.c.QrCodeController.userMain[0;39m - 로그테스트 err 
+[1;35m05-20 10:32:57[0;39m [[1;33mWARN [0;39m] [36mo.t.s.p.AbstractStandardFragmentInsertionTagProcessor.computeFragment[0;39m - [THYMELEAF][http-nio-1121-exec-1][/views/QRmain] Deprecated unwrapped fragment expression "fragments/head.html :: headFragment" found in template /views/QRmain, line 3, col 11. Please use the complete syntax of fragment expressions instead ("~{fragments/head.html :: headFragment}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf. 
+[1;35m05-20 10:36:44[0;39m [[1;33mINFO [0;39m] [36mo.h.v.i.u.Version.<clinit>[0;39m - HV000001: Hibernate Validator 8.0.1.Final 
+[1;35m05-20 10:36:44[0;39m [[1;33mINFO [0;39m] [36mm.q.p.MobileQrPrescriptionApp.logStarting[0;39m - Starting MobileQrPrescriptionApp using Java 17.0.3 with PID 20296 (C:\DEV_ITLJ\Mobile_QR_Prescription\out\production\classes started by ZeroBin in C:\DEV_ITLJ\Mobile_QR_Prescription) 
+[1;35m05-20 10:36:44[0;39m [[1;33mINFO [0;39m] [36mm.q.p.MobileQrPrescriptionApp.logStartupProfileInfo[0;39m - The following 1 profile is active: "local" 
+[1;35m05-20 10:36:45[0;39m [[1;33mINFO [0;39m] [36mo.s.b.w.e.t.TomcatWebServer.initialize[0;39m - Tomcat initialized with port(s): 1121 (http) 
+[1;35m05-20 10:36:45[0;39m [[1;33mINFO [0;39m] [36mo.a.c.h.Http11NioProtocol.log[0;39m - Initializing ProtocolHandler ["http-nio-1121"] 
+[1;35m05-20 10:36:45[0;39m [[1;33mINFO [0;39m] [36mo.a.c.c.StandardService.log[0;39m - Starting service [Tomcat] 
+[1;35m05-20 10:36:45[0;39m [[1;33mINFO [0;39m] [36mo.a.c.c.StandardEngine.log[0;39m - Starting Servlet engine: [Apache Tomcat/10.1.15] 
+[1;35m05-20 10:36:45[0;39m [[1;33mINFO [0;39m] [36mo.a.c.c.C.[.[.[/].log[0;39m - Initializing Spring embedded WebApplicationContext 
+[1;35m05-20 10:36:45[0;39m [[1;33mINFO [0;39m] [36mo.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext[0;39m - Root WebApplicationContext: initialization completed in 912 ms 
+[1;35m05-20 10:36:45[0;39m [[1;33mINFO [0;39m] [36mo.a.c.h.Http11NioProtocol.log[0;39m - Starting ProtocolHandler ["http-nio-1121"] 
+[1;35m05-20 10:36:45[0;39m [[1;33mINFO [0;39m] [36mo.s.b.w.e.t.TomcatWebServer.start[0;39m - Tomcat started on port(s): 1121 (http) with context path '' 
+[1;35m05-20 10:36:45[0;39m [[1;33mINFO [0;39m] [36mm.q.p.MobileQrPrescriptionApp.logStarted[0;39m - Started MobileQrPrescriptionApp in 2.123 seconds (process running for 2.609) 
+[1;35m05-20 10:36:49[0;39m [[1;33mINFO [0;39m] [36mo.a.c.c.C.[.[.[/].log[0;39m - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+[1;35m05-20 10:36:49[0;39m [[1;33mINFO [0;39m] [36mo.s.w.s.DispatcherServlet.initServletBean[0;39m - Initializing Servlet 'dispatcherServlet' 
+[1;35m05-20 10:36:49[0;39m [[1;33mINFO [0;39m] [36mo.s.w.s.DispatcherServlet.initServletBean[0;39m - Completed initialization in 0 ms 
+[1;35m05-20 10:36:49[0;39m [[1;33mINFO [0;39m] [36mm.q.p.c.QrCodeController.userMain[0;39m - 로그테스트 
+[1;35m05-20 10:36:49[0;39m [[1;33mERROR[0;39m] [36mm.q.p.c.QrCodeController.userMain[0;39m - 로그테스트 err 
+[1;35m05-20 10:36:49[0;39m [[1;33mWARN [0;39m] [36mo.t.s.p.AbstractStandardFragmentInsertionTagProcessor.computeFragment[0;39m - [THYMELEAF][http-nio-1121-exec-1][/views/QRmain] Deprecated unwrapped fragment expression "fragments/head.html :: headFragment" found in template /views/QRmain, line 3, col 11. Please use the complete syntax of fragment expressions instead ("~{fragments/head.html :: headFragment}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf. 

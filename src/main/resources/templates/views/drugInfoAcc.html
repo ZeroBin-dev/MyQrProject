@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{fragments/head.html :: headFragment}"/>
+<body>
+<div class="container">
+  <div id="imageSlide" class="mainImg image-slideshow">
+    <img id="drugImage" onError="this.src='/images/default.jpg'"
+         alt="약품 이미지" class="drugImg active">
+  </div>
+
+  <div class="dot-nav">
+    <span th:each="dozData, i : ${QrDataVO.dozList}"
+          class="dot" th:classappend="${dozData.baseDrugModel.index == i} ? 'active' : ''"
+          th:onclick="'setDrugData(' + ${dozData.baseDrugModel.index} + ')'">
+    </span>
+  </div>
+
+  <div class="mainArea">
+    <div class="subArea">
+      <h2 id="drugName">파목클정</h2><br/>
+      <div class="accordion" id="accordionContent">
+
+        <!-- 1. 효능/효과 -->
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h3 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne"
+                      aria-expanded="false" aria-controls="collapseOne">
+                효능/효과
+              </button>
+            </h3>
+          </div>
+
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionContent">
+            <div class="card-body" id="detailInfo1"></div>
+          </div>
+        </div>
+
+        <!-- 2. 주의사항 -->
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h3 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                      aria-expanded="false" aria-controls="collapseTwo">
+                주의사항
+              </button>
+            </h3>
+          </div>
+          <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionContent">
+            <div class="card-body" id="detailInfo2"></div>
+          </div>
+        </div>
+
+        <!-- 3. 성상 -->
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h3 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
+                      aria-expanded="false" aria-controls="collapseThree">
+                성상
+              </button>
+            </h3>
+          </div>
+          <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionContent">
+            <div class="card-body" id="detailInfo3"></div>
+          </div>
+        </div>
+
+        <!-- 4. 용법/용량 -->
+        <div class="card">
+          <div class="card-header" id="headingFour">
+            <h3 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour"
+                      aria-expanded="false" aria-controls="collapseFour">
+                용법/용량
+              </button>
+            </h3>
+          </div>
+          <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordionContent">
+            <div class="card-body" id="detailInfo4"></div>
+          </div>
+        </div>
+
+        <!-- 5. 복약정보 -->
+        <div class="card">
+          <div class="card-header" id="headingFive">
+            <h3 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive"
+                      aria-expanded="false" aria-controls="collapseFive">
+                복약정보
+              </button>
+            </h3>
+          </div>
+          <div id="collapseFive" class="collapse show" aria-labelledby="headingFive" data-parent="#accordionContent">
+            <div class="card-body" id="detailInfo5"></div>
+          </div>
+        </div>
+
+        <!-- 6. 보관방법 -->
+        <div class="card">
+          <div class="card-header" id="headingSix">
+            <h3 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix"
+                      aria-expanded="false" aria-controls="collapseSix">
+                보관방법
+              </button>
+            </h3>
+          </div>
+          <div id="collapseSix" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionContent">
+            <div class="card-body" id="detailInfo6"></div>
+          </div>
+        </div>
+
+        <!-- 7. 부작용 -->
+        <div class="card">
+          <div class="card-header" id="headingSeven">
+            <h3 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven"
+                      aria-expanded="false" aria-controls="collapseTwo">
+                부작용
+              </button>
+            </h3>
+          </div>
+          <div id="collapseSeven" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionContent">
+            <div class="card-body" id="detailInfo7"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<script th:inline="javascript">
+  var curIndex = [[${index}]];
+  var dozList = [[${QrDataVO.dozList}]];
+
+  window.onload = function () {
+    this.setDrugData(curIndex);
+  }
+
+  function setDrugData(index) {
+    var dozData = dozList[index];
+    var baseDrug = dozData.baseDrugModel;
+
+    // 이미지 설정
+    $('#drugImage').attr('src', baseDrug.imgUrl);
+
+    // 약품명
+    $('#drugName').html(baseDrug.drugName);
+
+    // 효능/효과
+    $('#detailInfo1').html(baseDrug.effect);
+
+    // 주의사항
+    const picList = baseDrug.pictogramList;
+    if(picList && picList.length > 0){
+      var picStr = '';
+      for(var i=0;i<picList.length;i++){
+        const picData = picList[i];
+        picStr += '<img src="'+picData+'" style="width: 90px; height: 120px;" alt="픽토그램">';
+      }
+      $('#detailInfo2').html(picStr);
+    }
+
+
+    // 성상
+    $('#detailInfo3').html(baseDrug.charact);
+
+    // 용법/용량
+    $('#detailInfo4').html(baseDrug.drugBox);
+
+    // 복약정보
+    $('#detailInfo5').html(baseDrug.dosage);
+
+    // 보관방법
+    $('#detailInfo6').html(baseDrug.stmt);
+
+    // 부작용
+    $('#detailInfo7').html(baseDrug.caution);
+  }
+</script>
+</body>
+</html>

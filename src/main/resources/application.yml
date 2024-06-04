@@ -1,0 +1,94 @@
+spring:
+  thymeleaf:
+    enabled: true
+    cache: true
+    prefix: classpath:templates/
+    suffix: .html
+    check-template-location: true
+
+  file:
+    ext: jpg
+
+  qr:
+    decode-url: http://www.medistorage.co.kr/mserver/api/irqr/decode?val=
+
+server:
+  port: 1121
+  servlet:
+    session:
+      timeout: 300
+    context-path:
+    encoding:
+      charset: UTF-8
+
+mybatis:
+  config-location: classpath:config/mybatis-config.xml
+  mapper-locations: classpath:mapper/*.xml
+
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "local"
+
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@//220.86.83.22:65065/ebiz
+    username: pharmorder
+    password: cresoty
+
+  log:
+    file-path: D:\logs\qrcode\qrcode.log
+
+  cdn:
+    url: http://112.175.72.26/cdn/image/
+    pictogram-url: http://112.175.72.26/cdn/pictogram/
+
+  kpa:
+    url: https://www.pharm.or.kr/images/sb_photo/big3/
+    down-path: D:/개인폴더/약정원데이터/약품이미지/
+    default-image: /images/default.jpg
+    pictogram-url: https://www.health.kr/images/pictogram/black/kor/
+    pic-down-path: D:/개인폴더/약정원데이터/픽토그램/
+
+  ftp:
+    ip: 112.175.72.26
+    id: root
+    pw: cre_82009
+    path: /po_nas/imageFiles/tproduct
+    pic-path: /po_nas/imageFiles/pictogram
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@//220.86.83.22:65065/ebiz
+    username: pharmorder
+    password: cresoty
+
+  log:
+    file-path: /home/mobileQr/logs/qrcode/qrcode.log
+
+  cdn:
+    url: http://112.175.72.26/cdn/image/
+    pictogram-url: http://112.175.72.26/cdn/pictogram/
+
+  kpa:
+    url: https://www.pharm.or.kr/images/sb_photo/big3/
+    down-path: /home/mobileQr/images/
+    default-image: /images/default.jpg
+    pictogram-url: https://www.health.kr/images/pictogram/black/kor/
+    pic-down-path: /home/mobileQr/pictogram/
+
+  ftp:
+    ip: 112.175.72.26
+    id: root
+    pw: cre_82009
+    path: /po_nas/imageFiles/tproduct
+    pic-path: /po_nas/imageFiles/pictogram

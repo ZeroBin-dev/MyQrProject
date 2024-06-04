@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mobile.qr.prescription.dao.QrCodeDAO">
+
+  <select id="selectBaseDrug" parameterType="String" resultType="mobile.qr.prescription.model.BaseDrugModel">
+    SELECT BD.IDX
+         , BD.DRUGCD
+         , BD.DRUG_NAME
+         , BD.DRUG_ENM
+         , BD.UPSO_NAME
+         , BD.COB_NAME
+         , BD.CLS_CODE
+         , BD.CLS_NAME
+         , BD.STMT
+         , BD.CHARACT
+         , BD.DRUG_BOX
+         , BD.EFFECT
+         , BD.DOSAGE
+         , BD.CAUTION
+         , IT.IMG_CODE
+         , (SELECT UNITNM FROM HIRA_CODE WHERE CODE = #{rpCodeCut} AND ROWNUM = 1) AS UNITNM
+         , PIC_CODES.PIC_CODES AS PIC_CODES
+    FROM BASEDRUG BD
+           LEFT JOIN IDENTIFY IT ON (BD.DRUGCD = IT.DRUG_CODE AND IT.REGIST_STAT = '등록완료')
+           LEFT JOIN (SELECT DIK_CODE, LISTAGG(PIC_CODE, ',') WITHIN GROUP (ORDER BY PIC.SEQ) AS PIC_CODES
+                      FROM KPA_CD_PICTOGRAM_SUB PIC
+                      GROUP BY PIC.DIK_CODE) PIC_CODES ON (BD.DRUGCD = PIC_CODES.DIK_CODE)
+    WHERE DRUGCD =
+          (SELECT DRUGCD
+           FROM (SELECT DRUGCD
+                 FROM DRUGCODE_BARCODE
+                 WHERE RP_CODE_CUT = #{rpCodeCut}
+                 GROUP BY DRUGCD, IDX
+                 ORDER BY IDX DESC)
+           WHERE ROWNUM = 1)
+      AND ROWNUM = 1
+  </select>
+
+</mapper>

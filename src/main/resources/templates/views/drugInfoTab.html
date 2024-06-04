@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{fragments/head.html :: headFragment}"/>
+<body>
+<div class="container">
+  <div id="imageSlide" class="mainImg image-slideshow">
+    <img id="drugImage" onError="this.src='/images/default.jpg'"
+         alt="약품 이미지" class="drugImg active">
+  </div>
+
+  <div class="dot-nav">
+    <span th:each="dozData, i : ${QrDataVO.dozList}"
+          class="dot" th:classappend="${dozData.baseDrugModel.index == i} ? 'active' : ''"
+          th:onclick="'setDrugData(' + ${dozData.baseDrugModel.index} + ')'">
+    </span>
+  </div>
+
+  <div class="mainArea">
+    <div class="subArea">
+      <h2 id="drugName">파목클정</h2><br/>
+    </div>
+    <table class="table table-bordered" onclick="toggleContent(event)">
+      <tbody>
+      <tr>
+        <td class="info1">전체</td>
+        <td class="info2">효능/효과</td>
+        <td class="info3">주의사항</td>
+        <td class="info4">성상</td>
+      </tr>
+      <tr>
+        <td class="info5">용법/용량</td>
+        <td class="info6">복약정보</td>
+        <td class="info7">보관방법</td>
+        <td class="info8">부작용</td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="detailInfo1 hidden" id="detailInfo1">전체내용</div>
+    <div class="detailInfo2 hidden" id="detailInfo2">효능/효과</div>
+    <div class="detailInfo3 hidden" id="detailInfo3">주의사항</div>
+    <div class="detailInfo4 hidden" id="detailInfo4">성상</div>
+    <div class="detailInfo5 hidden" id="detailInfo5">용법/용량</div>
+    <div class="detailInfo6 hidden" id="detailInfo6">복약정보</div>
+    <div class="detailInfo7 hidden" id="detailInfo7">보관방법</div>
+    <div class="detailInfo8 hidden" id="detailInfo8">부작용</div>
+  </div>
+  <div class="image-overlay">
+    <!--        <a href="#" onclick="changeImage(1)">...</a>-->
+  </div>
+</div>
+
+<script th:inline="javascript">
+  var curIndex = [[${index}]];
+  var dozList = [[${QrDataVO.dozList}]];
+
+  window.onload = function () {
+    this.setDrugData(curIndex);
+  }
+
+  function setDrugData(index) {
+    var dozData = dozList[index];
+    var baseDrug = dozData.baseDrugModel;
+
+    // 이미지 설정
+    $('#drugImage').attr('src',baseDrug.imgUrl);
+
+    // 약품명
+    $('#drugName').html(baseDrug.drugName);
+
+    // 효능/효과
+    $('#detailInfo2').html(baseDrug.effect);
+
+    // 주의사항
+    $('#detailInfo3').html(baseDrug.caution);
+
+    // 성상
+    $('#detailInfo4').html(baseDrug.charact);
+
+    // 용법/용량
+    $('#detailInfo5').html(baseDrug.drugBox);
+
+    // 복약정보
+    $('#detailInfo6').html(baseDrug.dosage);
+
+    // 보관방법
+    $('#detailInfo7').html(baseDrug.stmt);
+
+    // 부작용
+    $('#detailInfo8').html('부작용');
+
+    // 전체
+    var total = '';
+    total += $('#detailInfo2').html() + '<br/>';
+    total += $('#detailInfo3').html() + '<br/>';
+    total += $('#detailInfo4').html() + '<br/>';
+    total += $('#detailInfo5').html() + '<br/>';
+    total += $('#detailInfo6').html() + '<br/>';
+    total += $('#detailInfo7').html() + '<br/>';
+    total += $('#detailInfo8').html() + '<br/>';
+
+    $('#detailInfo1').html(total);
+  }
+
+  function toggleContent(event) {
+    var target = event.target;
+    // 클릭된 요소가 TD가 아닌 경우 부모 노드를 확인
+    if (target.tagName !== 'TD') {
+      target = target.parentNode;
+    }
+    // 클릭된 셀의 클래스에서 숫자를 가져와서 해당하는 detailInfo를 표시/숨김
+    var index = parseInt(target.classList[0].slice(-1));
+    if (!isNaN(index)) {
+      var detailInfo = document.querySelector('.detailInfo' + index);
+      if (detailInfo) {
+        document.querySelectorAll('[class^="detailInfo"]').forEach(function (element) {
+          element.classList.add('hidden');
+        });
+        detailInfo.classList.remove('hidden');
+      }
+    }
+  }
+
+</script>
+
+<style>
+    @keyframes slide-out-right {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(100%);
+        }
+    }
+
+    @keyframes slide-in-right {
+        from {
+            transform: translateX(-100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .mainImg {
+            max-height: 200px; /* 모바일 화면 높이 설정 */
+        }
+    }
+</style>
+</body>
+</html>

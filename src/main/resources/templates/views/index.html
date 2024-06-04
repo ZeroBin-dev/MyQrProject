@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{fragments/head.html :: headFragment}"/>
+<head>
+  <!-- 모바일 화면에 맞는 스타일링 -->
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f0f0f0;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center; /* 수평 가운데 정렬 */
+          align-items: center; /* 수직 가운데 정렬 */
+      }
+
+      .container {
+          max-width: 600px;
+          padding: 20px;
+          background-color: #fff;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          height: 1000px;
+          width: 800px;
+          text-align: center; /* 버튼 가운데 정렬 */
+      }
+
+      .subArea {
+          text-align: center;
+          margin: auto; /* 수평 가운데 정렬 */
+          width: 100%; /* subArea의 너비 100% 설정 */
+          margin-top: 100px;
+      }
+
+      .mainImg {
+          text-align: center;
+          width: 100%; /* subArea의 너비 100% 설정 */
+          margin-top: 50px;
+      }
+
+      h1 {
+          color: #333;
+          text-align: center; /* 가운데 정렬 */
+      }
+
+      h3 {
+          color: #333;
+          font-weight: bold;
+          font-size: 20px;
+      }
+
+      p {
+          color: #666;
+          line-height: 1.5;
+          text-align: center; /* 가운데 정렬 */
+      }
+
+      .btn-custom {
+          margin: 10px; /* 버튼 간격 설정 */
+          width: 300px; /* 버튼 너비 자동 설정 */
+          border: 2px solid #007bff; /* 테두리 파란색 설정 */
+          color: #fff; /* 텍스트 색상 흰색 설정 */
+      }
+
+      .btn-custom2 {
+          margin: 10px; /* 버튼 간격 설정 */
+          width: 300px; /* 버튼 너비 자동 설정 */
+          border: 2px solid #007bff; /* 테두리 파란색 설정 */
+      }
+
+      .left-align {
+          margin-left: 120px;
+          text-align: left;
+          width: 450px;
+      }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="mainImg">
+    <img th:src="@{/images/QR.png}" alt="QR 이미지">
+  </div>
+  <div class="subArea">
+    <h1 text="${pageTitle}">홍길동 님 </h1><br/>
+    <h1>모바일 QR 처방전</h1>
+    <br/>
+    <h3 text="${pageTitle}" class="left-align">[일자] 2018.11.21(수) 09:18:00</h3>
+    <h3 text="${pageTitle}" class="left-align">[병원] 크레소티병원</h3>
+    <br/>
+    <!-- 버튼의 클래스를 btn-custom으로 변경하고 btn-block 클래스 추가 -->
+    <button class="btn btn-primary btn-lg btn-custom">QR처방전 다운로드</button>
+    <br>
+    <button class="btn btn-lg btn-custom2" onclick="goDetailPage(1)">복약 가이드 바로가기_약6개</button>
+    <button class="btn btn-lg btn-custom2" onclick="goDetailPage(2)">복약 가이드 바로가기_약2개</button>
+  </div>
+</div>
+<script th:inline="javascript">
+  function goDetailPage(type) {
+    var queryString = '';
+
+    if (type === 1) {
+      queryString = encodeURIComponent('CRESA19/N$0GVLF7BP:50J02YSHS8358VVYY*J58LJM%16DS:UOVST3B936FA61JQV$YXL.9+59*TI+-8ESJG0AX3N3:2$YKWJGV16G*NOC9+I0UP0Z$4O.AEEN:LT+W8HCRPI3-+WSS6CZAQ$B0ZX3P1EJT-YTQTZ1:W.B8PMS1AHRORS8RRV3M54WTSVZRCI7T9FX:0*GPBS7ZB8ZQE50XM1JHEM.:8OYR953S*8%GH2QPO3VW416J8LQOGEFO2L9W9FU40.7QYXUWWS7C-QMKSH2.5TSADSU*FUN3IH9FD5ILN9JOH5HLUXG5YA:1BQIU.DNUOIZMA3PUIH2ZMAU5TB3DR$RLJD3VCUX8V1HUH261K**AG~<');
+    } else if (type === 2) {
+      queryString = 'CRESA19%2fN%246GVL8MJP%24N0DI1U2HTTB%2bA7J9WXX83NOOYB0TBZ8NYOH80GI04-7E%3a%240GH97Y90Q4GBE1T2HYK6EUN8UMKK014R-9L4RAK29T4POIO3RQBK8%2bXS-Y%3a5GSISYC7ND7FRXIU13RNM.W7GTX%3aJGF9JMRRXNL88-X9%24UR9DOI71LYHZ18CTHZNY*Q4OYU-1GP6JVBDDKUWHXPL56VVP%240EAUCXY6K16CFP%25OO4LTQHV.Z1JMRPKL%3aDM%25CF.E8L2B7MMUMG6F%3aBAJ%24Z4%2bCZ1IHGAEL6P0BS*HP~%3C';
+    }
+    window.location.replace('/drugList?qrdata=' + queryString);
+  }
+</script>
+
+</body>
+</html>

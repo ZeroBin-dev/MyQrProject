@@ -1,0 +1,46 @@
+.subArea {
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    margin-top: 80px;
+}
+.mainArea {
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    margin-right: 100px;
+}
+.subArea h3 {
+    cursor: pointer;
+    color: blue;
+}
+.subArea .content {
+    display: none;
+    height: auto; /* 내용이 펼쳐졌을 때 모두 보이게 설정 */
+}
+.card-header {
+    background-color: white;
+}
+.btn-link {
+    color: #000;
+    background-color: white; /* 버튼 배경색을 흰색으로 설정 */
+    text-align: left; /* 버튼 가운데 정렬 */
+    width: 100%;
+    padding-right: 0;
+    font-weight: bold;
+}
+.btn-link.collapsed::after {
+    content: "^";
+    float: right;
+}
+
+/* 수정된 스타일 */
+.accordion {
+    text-align: left;
+    margin-top: 40px; /* 아코디언과 이미지 간의 간격을 조정 */
+    max-height: calc(100vh - 200px); /* 컨테이너의 높이에서 아코디언 및 다른 요소의 높이를 제외하고 스크롤 사용 */
+    overflow-y: auto; /* 필요한 경우 세로 스크롤 표시 */
+}
+.card-body {
+    padding: 10px; /* 카드 바디 패딩 조정 */
+}

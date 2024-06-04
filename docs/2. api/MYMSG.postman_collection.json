@@ -1,0 +1,357 @@
+{
+	"info": {
+		"_postman_id": "e3b4a7ac-316e-4c81-8be2-75df26e6f716",
+		"name": "MYMSG",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11671719"
+	},
+	"item": [
+		{
+			"name": "메인",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:32000/main",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "32000",
+					"path": [
+						"main"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "공통상수",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cnstCd\" : \"USER_PASS_YN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{UrlPort}}/cnst/inf",
+					"protocol": "http",
+					"host": [
+						"{{UrlPort}}"
+					],
+					"path": [
+						"cnst",
+						"inf"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "공통상수",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cnstCd\" : \"USER_PASS_YN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:32000/cnst/inf",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "32000",
+							"path": [
+								"cnst",
+								"inf"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 30 Oct 2023 00:27:40 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"resultCd\": \"200\",\n    \"cnstVl\": \"Y\"\n}"
+				}
+			]
+		},
+		{
+			"name": "redisSet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"key\" : \"CYB_KEY\",\r\n    \"value\" : \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:32000/redis/set",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "32000",
+					"path": [
+						"redis",
+						"set"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "redis",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"key\" : \"CYB_KEY\",\r\n    \"value\" : \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:32000/redis/set",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "32000",
+							"path": [
+								"redis",
+								"set"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 01 Nov 2023 04:43:42 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"resultCd\": \"200\",\n    \"succYn\": \"Y\"\n}"
+				}
+			]
+		},
+		{
+			"name": "redisGet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"key\" : \"CYB_KEY\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:32000/redis/get",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "32000",
+					"path": [
+						"redis",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "로그인",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Strip JSON Comments\r",
+							"if (pm?.request?.body?.options?.raw?.language === 'json') {\r",
+							"    const rawData = pm.request.body.toString();\r",
+							"    const strippedData = rawData.replace(\r",
+							"        /\\\\\"|\"(?:\\\\\"|[^\"])*\"|(\\/\\/.*|\\/\\*[\\s\\S]*?\\*\\/)/g,\r",
+							"        (m, g) => g ? \"\" : m\r",
+							"    );\r",
+							"    pm.request.body.update(JSON.stringify(JSON.parse(strippedData)));\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"header\" : {\r\n\t\t\"channel\" : \"PC-WEB\"\r\n\t},\r\n\t\"body\" : {\r\n\t\t\"userId\" : \"admin\", // 아이디\r\n\t\t\"userPw\" : \"1234\" // 패스워드\r\n\t}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:32000/main",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "32000",
+					"path": [
+						"main"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "로그인처리",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Strip JSON Comments\r",
+							"if (pm?.request?.body?.options?.raw?.language === 'json') {\r",
+							"    const rawData = pm.request.body.toString();\r",
+							"    const strippedData = rawData.replace(\r",
+							"        /\\\\\"|\"(?:\\\\\"|[^\"])*\"|(\\/\\/.*|\\/\\*[\\s\\S]*?\\*\\/)/g,\r",
+							"        (m, g) => g ? \"\" : m\r",
+							"    );\r",
+							"    pm.request.body.update(JSON.stringify(JSON.parse(strippedData)));\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\" : \"admin\", // 아이디\r\n    \"userPw\" : \"1234\" // 패스워드\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{UrlPort}}/user/loginProc",
+					"protocol": "http",
+					"host": [
+						"{{UrlPort}}"
+					],
+					"path": [
+						"user",
+						"loginProc"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

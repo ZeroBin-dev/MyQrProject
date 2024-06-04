@@ -1,0 +1,130 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: auto; /* 높이 자동 조정 */
+}
+
+.topBox {
+    background: linear-gradient(to bottom, #0077FF, #0055CC);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+    margin-left: auto;
+    margin-top: auto;
+}
+
+.form input[type="button"] {
+    margin-top: 10px;
+    width: 100%;
+}
+
+footer {
+    height: calc(66.66vh);
+    background-color: lightgray;
+}
+
+.form-group {
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #CCCCCC;
+}
+
+.form-group input[type="text"] {
+    width: calc(100% - 20px);
+}
+
+.form-groups {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    margin: 20px 0;
+    margin-bottom: -20px;
+}
+
+.form-group {
+    width: calc(50% - 20px);
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #CCCCCC;
+    height: auto; /* 높이 조정 */
+    margin-right: 10px; /* 오른쪽 간격 조정 */
+}
+
+.form-group:last-child {
+    margin-right: 0;
+}
+
+/* 이미지 스타일 수정 */
+.form-group img {
+    max-width: 100%; /* 최대 너비를 부모 요소의 너비에 맞춤 */
+    height: auto; /* 높이 자동으로 조정 */
+    margin-bottom: 10px; /* 이미지와 텍스트 사이의 간격 조정 */
+}
+
+.form-group input[type="text"] {
+    width: calc(100% - 20px);
+}
+
+@media screen and (max-width: 768px) {
+    .form-group {
+        width: 100%;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+}
+
+.drugImgContainer {
+    width: 100%; /* 이미지 컨테이너의 너비 */
+    height: 115px; /* 이미지 컨테이너의 높이 */
+    overflow: hidden; /* 오버플로우를 숨김으로 설정하여 이미지를 잘라내어 표시 */
+}
+
+.drugImg {
+    width: 100%; /* 이미지의 너비를 100%로 설정하여 부모 컨테이너에 맞춤 */
+    height: auto; /* 높이를 자동으로 조정하여 원래 이미지의 비율을 유지 */
+}
+
+.sub-desc {
+    border: 1px solid blue;
+    border-radius: 2px;
+    padding: 1px;
+    margin: 1px;
+    color: #007bff;
+    font-size: 14pt
+}
